@@ -1,5 +1,5 @@
-import React from 'react'
-import { Pressable, Image } from 'react-native'
+import React, { useRef } from 'react'
+import { Pressable, Image, View } from 'react-native'
 import BackgroundContainer from './backgroundContainer'
 import Bird from './bird'
 
@@ -8,18 +8,24 @@ export default function GameMenu({
   setRunning,
   birdX,
   birdY,
+  velocity,
 }: {
   setMenuVisibility: React.Dispatch<React.SetStateAction<boolean>>
   setRunning: React.Dispatch<React.SetStateAction<boolean>>
   birdX: number
   birdY: number
+  velocity: number
 }) {
+  const viewRef = useRef(null)
+
   const ratio = 1.25
   const width = 125
   const height = width * ratio
+  const birdSize = 52
 
   return (
     <>
+      <View ref={viewRef} />
       <BackgroundContainer />
       <Pressable
         style={{ flex: 1 }}
@@ -54,7 +60,13 @@ export default function GameMenu({
         }}
         source={require('../assets/get_ready.png')}
       />
-      <Bird birdX={birdX} birdY={birdY} moving={true} />
+      <Bird
+        velocity={velocity}
+        birdX={birdX}
+        size={birdSize}
+        birdY={birdY}
+        moving={true}
+      />
     </>
   )
 }

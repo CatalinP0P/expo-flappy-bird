@@ -5,9 +5,17 @@ interface birdProps {
   moving: boolean
   birdX: number
   birdY: number
+  size: number
+  velocity: number
 }
 
-export default function Bird({ moving, birdX, birdY }: birdProps) {
+export default function Bird({
+  moving,
+  birdX,
+  birdY,
+  size,
+  velocity,
+}: birdProps) {
   const [imageIndex, setImageIndex] = useState(1)
   let imageIntervalId: NodeJS.Timeout
 
@@ -43,14 +51,24 @@ export default function Bird({ moving, birdX, birdY }: birdProps) {
     }
   }
 
+  const getRotationAngle = () => {
+    const angle = velocity * 0.5
+
+    if (angle > 90) return 90
+    if (angle < -90) return -90
+
+    return angle
+  }
+
   return (
     <Image
       style={{
         position: 'absolute',
         left: birdX,
         top: birdY,
-        height: 40,
-        width: 58,
+        height: size,
+        width: size / 0.705,
+        transform: [{ rotate: getRotationAngle() + 'deg' }],
       }}
       source={getImage()}
     />

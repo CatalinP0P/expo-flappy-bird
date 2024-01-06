@@ -25,6 +25,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "fonts": {
+      "custom": {
+        "Press Start 2P": "./assets/fonts/PressStart2P.ttf"
+      }
     }
   }
 }

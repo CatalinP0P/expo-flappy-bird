@@ -9,11 +9,12 @@ export default function ScoreLabel({ value }: { value: number }) {
         width: '100%',
         textAlign: 'center',
         alignItems: 'center',
-        paddingTop: 64,
+        paddingTop: 80,
         zIndex: 10,
         fontWeight: '800',
         color: 'white',
         fontSize: 30,
+        fontFamily: 'custom',
       }}
     >
       {value}
